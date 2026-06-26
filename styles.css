@@ -844,6 +844,169 @@ h3 {
   text-decoration: line-through;
 }
 
+.install-section {
+  background: var(--color-canvas);
+}
+
+.install-layout {
+  display: grid;
+  gap: 8px;
+}
+
+.install-shell {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.install-preview {
+  display: grid;
+  min-height: 280px;
+  place-items: center;
+  padding: 22px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.home-screen {
+  display: grid;
+  grid-template-columns: repeat(3, 64px);
+  gap: 16px;
+  align-items: start;
+  justify-content: center;
+  width: min(100%, 300px);
+  padding: 26px;
+  background: linear-gradient(150deg, var(--color-primary-soft), var(--color-accent-soft));
+  border: 1px solid var(--color-border);
+  border-radius: 28px;
+}
+
+.home-screen > span,
+.home-app {
+  display: grid;
+  justify-items: center;
+  align-content: start;
+  width: 64px;
+  min-height: 78px;
+}
+
+.home-screen > span::before {
+  content: "";
+  display: block;
+  width: 52px;
+  height: 52px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(222, 219, 210, 0.72);
+  border-radius: 14px;
+}
+
+.home-app {
+  position: relative;
+  gap: 7px;
+}
+
+.home-app img {
+  display: block;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  box-shadow: 0 10px 20px rgba(31, 37, 34, 0.16);
+}
+
+.home-app strong {
+  position: absolute;
+  top: 59px;
+  left: 50%;
+  width: 64px;
+  color: var(--color-text);
+  font-size: 0.7rem;
+  line-height: 1.1;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.install-guide {
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+}
+
+.install-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 8px;
+  background: var(--color-canvas-soft);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.install-tab {
+  min-height: 46px;
+  padding: 0 10px;
+  color: var(--color-muted);
+  font-weight: 800;
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: var(--radius-tight);
+  cursor: pointer;
+}
+
+.install-tab:hover,
+.install-tab:focus-visible {
+  color: var(--color-text);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.install-tab.is-active {
+  color: var(--color-surface);
+  background: var(--color-primary);
+}
+
+.install-panels {
+  padding: 20px;
+}
+
+.install-panel h3 {
+  font-size: 1.35rem;
+}
+
+.install-steps {
+  display: grid;
+  gap: 12px;
+  padding: 0;
+  margin: 18px 0 0;
+  list-style: none;
+  counter-reset: install-step;
+}
+
+.install-steps li {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  min-height: 54px;
+  color: var(--color-muted);
+}
+
+.install-steps li::before {
+  counter-increment: install-step;
+  content: counter(install-step);
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  color: var(--color-primary-strong);
+  font-weight: 900;
+  background: var(--color-primary-soft);
+  border-radius: var(--radius);
+}
+
 .final-cta {
   padding: 72px 16px;
   background: var(--color-surface);
@@ -1087,6 +1250,31 @@ h3 {
 
   .demo-panel {
     min-height: 430px;
+    padding: 26px;
+  }
+
+  .install-layout {
+    grid-template-columns: 0.82fr 1.18fr;
+    align-items: start;
+    gap: 44px;
+  }
+
+  .install-layout .section-heading {
+    position: sticky;
+    top: 110px;
+    margin-bottom: 0;
+  }
+
+  .install-shell {
+    grid-template-columns: 0.82fr 1.18fr;
+    gap: 18px;
+  }
+
+  .install-preview {
+    min-height: 100%;
+  }
+
+  .install-panels {
     padding: 26px;
   }
 

@@ -40,6 +40,27 @@ demoTabs.forEach((tab) => {
   });
 });
 
+const installTabs = Array.from(document.querySelectorAll("[data-install-tab]"));
+const installPanels = Array.from(document.querySelectorAll("[data-install-panel]"));
+
+installTabs.forEach((tab) => {
+  tab.addEventListener("click", () => {
+    const target = tab.getAttribute("data-install-tab");
+
+    installTabs.forEach((item) => {
+      const isActive = item === tab;
+      item.classList.toggle("is-active", isActive);
+      item.setAttribute("aria-selected", String(isActive));
+    });
+
+    installPanels.forEach((panel) => {
+      const isActive = panel.getAttribute("data-install-panel") === target;
+      panel.classList.toggle("is-active", isActive);
+      panel.toggleAttribute("hidden", !isActive);
+    });
+  });
+});
+
 const canvas = document.querySelector("#hero-canvas");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
