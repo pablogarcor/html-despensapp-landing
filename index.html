@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DespensApp - Despensa, recetas y plan semanal</title>
+    <meta
+      name="description"
+      content="Gestiona tu despensa, crea recetas con lo que tienes y planifica la compra semanal desde el móvil."
+    >
+    <meta name="theme-color" content="#156a5a">
+    <meta property="og:title" content="DespensApp - Despensa, recetas y plan semanal">
+    <meta
+      property="og:description"
+      content="Planifica la semana con lo que ya tienes en casa y genera una compra ajustada a tu despensa."
+    >
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" data-header>
+      <a class="brand" href="#inicio" aria-label="Ir al inicio de DespensApp">
+        <span class="brand-mark" aria-hidden="true">
+          <span></span>
+        </span>
+        <span>DespensApp</span>
+      </a>
+
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-nav"
+        aria-label="Abrir menú"
+        data-nav-toggle
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Navegación principal" data-nav>
+        <a href="#problema">Problema</a>
+        <a href="#flujo">Flujo</a>
+        <a href="#funciones">Funciones</a>
+        <a href="#demo">Demo</a>
+        <a class="nav-cta" href="https://pablogarcor.github.io/js-despensapp/">Abrir app</a>
+      </nav>
+    </header>
+
+    <main id="inicio">
+      <section class="hero" aria-labelledby="hero-title">
+        <canvas class="hero-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">
+              <span aria-hidden="true"></span>
+              PWA local · sin cuenta · preparada para offline
+            </p>
+            <h1 id="hero-title">DespensApp</h1>
+            <p class="hero-lead">
+              Planifica la semana con lo que ya tienes en casa.
+            </p>
+            <p class="hero-text">
+              Registra tu despensa, crea recetas con tus alimentos y deja que la app te diga qué falta comprar para cocinar los próximos días.
+            </p>
+            <div class="hero-actions" aria-label="Acciones principales">
+              <a class="button button-primary" href="https://pablogarcor.github.io/js-despensapp/">
+                Probar DespensApp
+              </a>
+              <a class="button button-secondary" href="#demo">
+                Ver cómo funciona
+              </a>
+            </div>
+            <ul class="hero-points" aria-label="Ventajas principales">
+              <li>Datos en tu navegador</li>
+              <li>Compra calculada</li>
+              <li>Backup JSON</li>
+            </ul>
+          </div>
+
+          <div
+            class="phone-mockup"
+            role="img"
+            aria-label="Mockup de DespensApp con despensa, plan semanal y lista de compra"
+          >
+            <div class="phone-shell">
+              <div class="phone-top" aria-hidden="true"></div>
+              <div class="app-screen">
+                <div class="app-bar">
+                  <span class="app-logo" aria-hidden="true"></span>
+                  <div>
+                    <strong>Mi semana</strong>
+                    <small>Resumen activo</small>
+                  </div>
+                </div>
+                <div class="summary-row">
+                  <span>
+                    <strong>18</strong>
+                    alimentos
+                  </span>
+                  <span>
+                    <strong>7</strong>
+                    comidas
+                  </span>
+                  <span>
+                    <strong>5</strong>
+                    faltan
+                  </span>
+                </div>
+                <div class="meal-card featured">
+                  <div>
+                    <span class="tag">Comida</span>
+                    <h2>Garbanzos con verduras</h2>
+                  </div>
+                  <p>Faltan: zanahoria · pimiento</p>
+                </div>
+                <div class="stock-list">
+                  <div>
+                    <span class="food-dot green" aria-hidden="true"></span>
+                    Arroz
+                    <strong>1,5 kg</strong>
+                  </div>
+                  <div>
+                    <span class="food-dot blue" aria-hidden="true"></span>
+                    Tomate
+                    <strong>6 ud</strong>
+                  </div>
+                  <div>
+                    <span class="food-dot amber" aria-hidden="true"></span>
+                    Leche
+                    <strong>1 l</strong>
+                  </div>
+                </div>
+                <div class="shopping-strip">
+                  <span>Compra sugerida</span>
+                  <strong>8 artículos</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section problem-section" id="problema" aria-labelledby="problema-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="section-kicker">Menos improvisación</p>
+            <h2 id="problema-title">Lo cotidiano se desordena rápido.</h2>
+            <p>
+              DespensApp pone en el mismo sitio lo que tienes, lo que quieres cocinar y lo que falta comprar.
+            </p>
+          </div>
+
+          <div class="problem-grid">
+            <article class="info-card">
+              <span class="icon-box" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M6 7h12l-1 13H7L6 7Z"></path>
+                  <path d="M9 7a3 3 0 0 1 6 0"></path>
+                  <path d="M9 11h6"></path>
+                </svg>
+              </span>
+              <h3>Compras repetidas</h3>
+              <p>Vuelves con productos que ya estaban al fondo del armario.</p>
+            </article>
+            <article class="info-card">
+              <span class="icon-box blue" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M4 7h16"></path>
+                  <path d="M7 7v13"></path>
+                  <path d="M17 7v13"></path>
+                  <path d="M8 4h8"></path>
+                  <path d="M10 11h4"></path>
+                  <path d="M10 15h4"></path>
+                </svg>
+              </span>
+              <h3>Recetas que no encajan</h3>
+              <p>Encuentras ideas tarde y descubres los faltantes al empezar.</p>
+            </article>
+            <article class="info-card">
+              <span class="icon-box amber" aria-hidden="true">
+                <svg viewBox="0 0 24 24" focusable="false">
+                  <path d="M7 3v4"></path>
+                  <path d="M17 3v4"></path>
+                  <path d="M4 8h16"></path>
+                  <path d="M6 5h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z"></path>
+                  <path d="M8 12h3"></path>
+                  <path d="M13 12h3"></path>
+                  <path d="M8 16h3"></path>
+                </svg>
+              </span>
+              <h3>Planes en notas sueltas</h3>
+              <p>La semana queda partida entre memoria, papel y mensajes.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section flow-section" id="flujo" aria-labelledby="flujo-title">
+        <div class="section-inner">
+          <div class="section-heading compact">
+            <p class="section-kicker">Flujo principal</p>
+            <h2 id="flujo-title">De la despensa a la compra en tres pasos.</h2>
+          </div>
+
+          <div class="flow-grid">
+            <article class="flow-step">
+              <span class="step-number">1</span>
+              <h3>Guarda tu despensa</h3>
+              <p>Registra alimentos con cantidad y unidad para saber qué hay antes de comprar más.</p>
+            </article>
+            <article class="flow-step">
+              <span class="step-number">2</span>
+              <h3>Crea recetas reales</h3>
+              <p>Las recetas usan alimentos existentes, así el plan nace conectado al stock.</p>
+            </article>
+            <article class="flow-step">
+              <span class="step-number">3</span>
+              <h3>Planifica y compra</h3>
+              <p>Rellena la semana y la app calcula faltantes según lo que vas a cocinar.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section feature-section" id="funciones" aria-labelledby="funciones-title">
+        <div class="section-inner">
+          <div class="feature-layout">
+            <div class="section-heading sticky-heading">
+              <p class="section-kicker">Funciones clave</p>
+              <h2 id="funciones-title">Una herramienta doméstica, concreta y sin ruido.</h2>
+              <p>
+                El MVP evita cuentas, backend y sincronización automática. Todo se centra en planificar mejor desde el móvil.
+              </p>
+            </div>
+
+            <div class="feature-grid">
+              <article class="feature-item">
+                <span class="feature-icon" aria-hidden="true">+</span>
+                <h3>Stock editable</h3>
+                <p>Suma o resta alimentos sin reconstruir toda la despensa.</p>
+              </article>
+              <article class="feature-item">
+                <span class="feature-icon blue" aria-hidden="true">R</span>
+                <h3>Recetas conectadas</h3>
+                <p>Ingredientes ligados a alimentos existentes, no a texto libre.</p>
+              </article>
+              <article class="feature-item">
+                <span class="feature-icon amber" aria-hidden="true">7</span>
+                <h3>Plan semanal</h3>
+                <p>Desayuno, comida y cena para los próximos siete días.</p>
+              </article>
+              <article class="feature-item">
+                <span class="feature-icon danger" aria-hidden="true">!</span>
+                <h3>Faltantes claros</h3>
+                <p>La lista compara tu plan con lo que ya tienes en casa.</p>
+              </article>
+              <article class="feature-item">
+                <span class="feature-icon" aria-hidden="true">✓</span>
+                <h3>Comidas hechas</h3>
+                <p>Marca una comida como hecha y la despensa se actualiza.</p>
+              </article>
+              <article class="feature-item">
+                <span class="feature-icon blue" aria-hidden="true">{}</span>
+                <h3>Backup JSON</h3>
+                <p>Exporta e importa datos para moverlos entre dispositivos.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section privacy-section" aria-labelledby="privacidad-title">
+        <div class="section-inner privacy-panel">
+          <div>
+            <p class="section-kicker">Privacidad y control</p>
+            <h2 id="privacidad-title">Tus datos se quedan en tu navegador.</h2>
+          </div>
+          <p>
+            No necesitas crear una cuenta para probar el MVP. La información vive en IndexedDB y, por ahora, no hay sincronización entre dispositivos: para mover tus datos puedes exportar e importar un backup JSON.
+          </p>
+        </div>
+      </section>
+
+      <section class="section demo-section" id="demo" aria-labelledby="demo-title">
+        <div class="section-inner">
+          <div class="section-heading">
+            <p class="section-kicker">Captura guiada</p>
+            <h2 id="demo-title">Tres vistas para resolver una semana.</h2>
+            <p>
+              Despensa, plan y compra comparten la misma información para que cada decisión afecte al resto.
+            </p>
+          </div>
+
+          <div class="demo-shell">
+            <div class="demo-tabs" role="tablist" aria-label="Vistas de la demo">
+              <button class="demo-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="panel-despensa" id="tab-despensa" data-demo-tab="despensa">
+                Despensa
+              </button>
+              <button class="demo-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-plan" id="tab-plan" data-demo-tab="plan">
+                Plan
+              </button>
+              <button class="demo-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-compra" id="tab-compra" data-demo-tab="compra">
+                Compra
+              </button>
+            </div>
+
+            <div class="demo-viewport">
+              <article class="demo-panel is-active" id="panel-despensa" role="tabpanel" aria-labelledby="tab-despensa" data-demo-panel="despensa">
+                <div class="panel-title-row">
+                  <div>
+                    <span class="tag">Despensa</span>
+                    <h3>Stock listo para cocinar</h3>
+                  </div>
+                  <strong>18 alimentos</strong>
+                </div>
+                <div class="inventory-list">
+                  <div>
+                    <span>Garbanzos</span>
+                    <strong>500 g</strong>
+                  </div>
+                  <div>
+                    <span>Arroz</span>
+                    <strong>1,5 kg</strong>
+                  </div>
+                  <div>
+                    <span>Tomate triturado</span>
+                    <strong>2 botes</strong>
+                  </div>
+                  <div>
+                    <span>Aceite de oliva</span>
+                    <strong>750 ml</strong>
+                  </div>
+                </div>
+              </article>
+
+              <article class="demo-panel" id="panel-plan" role="tabpanel" aria-labelledby="tab-plan" data-demo-panel="plan" hidden>
+                <div class="panel-title-row">
+                  <div>
+                    <span class="tag blue">Semana</span>
+                    <h3>Plan de siete días</h3>
+                  </div>
+                  <strong>21 huecos</strong>
+                </div>
+                <div class="week-grid" aria-label="Plan semanal de ejemplo">
+                  <span>Lun <strong>Tortilla</strong></span>
+                  <span>Mar <strong>Pasta</strong></span>
+                  <span>Mié <strong>Garbanzos</strong></span>
+                  <span>Jue <strong>Crema</strong></span>
+                  <span>Vie <strong>Arroz</strong></span>
+                  <span>Sáb <strong>Lentejas</strong></span>
+                  <span>Dom <strong>Libre</strong></span>
+                </div>
+              </article>
+
+              <article class="demo-panel" id="panel-compra" role="tabpanel" aria-labelledby="tab-compra" data-demo-panel="compra" hidden>
+                <div class="panel-title-row">
+                  <div>
+                    <span class="tag amber">Compra</span>
+                    <h3>Faltantes calculados</h3>
+                  </div>
+                  <strong>8 artículos</strong>
+                </div>
+                <div class="shopping-list">
+                  <label>
+                    <input type="checkbox">
+                    <span>Zanahoria</span>
+                    <strong>4 ud</strong>
+                  </label>
+                  <label>
+                    <input type="checkbox">
+                    <span>Pimiento</span>
+                    <strong>2 ud</strong>
+                  </label>
+                  <label>
+                    <input type="checkbox" checked>
+                    <span>Huevos</span>
+                    <strong>6 ud</strong>
+                  </label>
+                  <label>
+                    <input type="checkbox">
+                    <span>Yogur natural</span>
+                    <strong>4 ud</strong>
+                  </label>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="final-cta" aria-labelledby="cta-title">
+        <div class="section-inner final-cta-inner">
+          <div>
+            <p class="section-kicker">Lista para probar</p>
+            <h2 id="cta-title">Organiza lo que tienes antes de comprar más.</h2>
+          </div>
+          <div class="final-actions">
+            <a class="button button-primary" href="https://pablogarcor.github.io/js-despensapp/">
+              Abrir DespensApp
+            </a>
+            <a class="button button-secondary" href="#inicio">
+              Volver arriba
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="section-inner footer-inner">
+        <span>DespensApp</span>
+        <span>PWA local para despensa, recetas y compra semanal.</span>
+      </div>
+    </footer>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
