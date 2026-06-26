@@ -65,3 +65,61 @@ También conviene revisar manualmente:
 - tabs de instalación;
 - que el título `DespensApp` no se parta;
 - que no haya referencias a CDNs o librerías externas.
+
+## Despliegue
+
+La landing se despliega en GitHub Pages con GitHub Actions cuando se suben cambios a la rama `master`.
+
+El workflow está en:
+
+```text
+.github/workflows/deploy-pages.yml
+```
+
+Publica solo los archivos necesarios:
+
+```text
+index.html
+styles.css
+app.js
+CNAME
+assets/
+```
+
+El dominio personalizado configurado para la landing es:
+
+```text
+despensapp.xyz
+```
+
+En la configuración del repositorio en GitHub, Pages debe estar configurado para desplegar desde `GitHub Actions` y el custom domain debe ser `despensapp.xyz`.
+
+En Namecheap, usando `Advanced DNS`, el dominio raíz debe apuntar a GitHub Pages con estos registros:
+
+```text
+Type: A Record
+Host: @
+Value: 185.199.108.153
+
+Type: A Record
+Host: @
+Value: 185.199.109.153
+
+Type: A Record
+Host: @
+Value: 185.199.110.153
+
+Type: A Record
+Host: @
+Value: 185.199.111.153
+```
+
+Para que `www.despensapp.xyz` también funcione:
+
+```text
+Type: CNAME
+Host: www
+Value: pablogarcor.github.io
+```
+
+Cuando GitHub detecte correctamente los DNS, activa `Enforce HTTPS` en la sección Pages del repositorio.
