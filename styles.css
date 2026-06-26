@@ -98,32 +98,17 @@ button {
   width: 34px;
   height: 34px;
   place-items: center;
-  background: var(--color-primary);
+  overflow: hidden;
+  background: var(--color-primary-strong);
   border-radius: 8px;
   box-shadow: 0 8px 18px rgba(21, 106, 90, 0.18);
 }
 
-.brand-mark::before,
-.brand-mark::after,
-.brand-mark span {
-  content: "";
+.brand-mark img,
+.app-logo img {
   display: block;
-  width: 18px;
-  height: 3px;
-  background: var(--color-surface);
-  border-radius: 999px;
-}
-
-.brand-mark::before {
-  transform: translateY(-4px);
-}
-
-.brand-mark::after {
-  transform: translateY(4px);
-}
-
-.brand-mark span {
-  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .site-nav {
@@ -252,11 +237,13 @@ p {
 }
 
 h1 {
-  max-width: 10ch;
+  max-width: none;
   margin: 0;
-  font-size: 3.25rem;
+  font-size: 2.85rem;
   line-height: 0.92;
   letter-spacing: 0;
+  overflow-wrap: normal;
+  white-space: nowrap;
 }
 
 h2 {
@@ -415,11 +402,11 @@ h3 {
 }
 
 .app-logo {
+  display: block;
   width: 36px;
   height: 36px;
-  background:
-    linear-gradient(90deg, transparent 0 33%, rgba(255, 255, 255, 0.86) 33% 45%, transparent 45%),
-    var(--color-primary);
+  overflow: hidden;
+  background: var(--color-primary-strong);
   border-radius: 8px;
 }
 
@@ -660,12 +647,18 @@ h3 {
 .flow-step::after {
   content: "";
   position: absolute;
+  z-index: 0;
   top: 34px;
   right: -38px;
   width: 96px;
   height: 96px;
   background: rgba(228, 243, 238, 0.78);
   border-radius: 999px;
+}
+
+.flow-step > * {
+  position: relative;
+  z-index: 1;
 }
 
 .step-number {
@@ -946,6 +939,10 @@ h3 {
 
   .hero-inner {
     gap: 24px;
+  }
+
+  h1 {
+    font-size: 2.55rem;
   }
 
   .phone-mockup {
