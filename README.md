@@ -45,10 +45,10 @@ http://localhost:8080
 - Evitar lenguaje técnico en textos visibles: no hablar de PWA, backend, IndexedDB, JSON o service workers.
 - Explicar beneficios concretos: planificar, saber qué hay, comprar lo necesario, crear copia de seguridad e instalarla en el móvil.
 - Usar el icono local de `assets/despensapp-icon.svg` para marca, favicon y vistas simuladas.
-- Mantener el CTA principal apuntando a:
+- Mantener el CTA principal apuntando a la app:
 
 ```text
-https://pablogarcor.github.io/js-despensapp/
+https://app.despensapp.xyz/
 ```
 
 ## Verificación recomendada
@@ -92,6 +92,14 @@ El dominio personalizado configurado para la landing es:
 despensapp.xyz
 ```
 
+La app instalable debe vivir en:
+
+```text
+app.despensapp.xyz
+```
+
+La instalación desde Chrome, Android o Safari se debe iniciar desde `https://app.despensapp.xyz/`, no desde la landing.
+
 En la configuración del repositorio en GitHub, Pages debe estar configurado para desplegar desde `GitHub Actions` y el custom domain debe ser `despensapp.xyz`.
 
 En Namecheap, usando `Advanced DNS`, el dominio raíz debe apuntar a GitHub Pages con estos registros:
@@ -121,5 +129,15 @@ Type: CNAME
 Host: www
 Value: pablogarcor.github.io
 ```
+
+Para que `app.despensapp.xyz` apunte a la app, configura el repositorio donde vive la app con custom domain `app.despensapp.xyz` y añade en Namecheap:
+
+```text
+Type: CNAME
+Host: app
+Value: pablogarcor.github.io
+```
+
+En ese repositorio de la app, su manifest y service worker deben estar servidos desde `https://app.despensapp.xyz/`.
 
 Cuando GitHub detecte correctamente los DNS, activa `Enforce HTTPS` en la sección Pages del repositorio.

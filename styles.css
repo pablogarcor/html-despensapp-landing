@@ -853,6 +853,10 @@ h3 {
   gap: 8px;
 }
 
+.install-link {
+  margin-top: 22px;
+}
+
 .install-shell {
   display: grid;
   grid-template-columns: 1fr;
