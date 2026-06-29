@@ -67,10 +67,10 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 if (canvas instanceof HTMLCanvasElement) {
   const context = canvas.getContext("2d");
   const pantryItems = [
-    { label: "Arroz", color: "#156a5a", x: 0.18, y: 0.28, w: 92, h: 34 },
-    { label: "Tomate", color: "#215b91", x: 0.72, y: 0.2, w: 104, h: 34 },
-    { label: "Huevos", color: "#9b5b12", x: 0.62, y: 0.68, w: 96, h: 34 },
-    { label: "Lentejas", color: "#a33b2b", x: 0.28, y: 0.74, w: 112, h: 34 },
+    { label: "Arroz", color: "#003f2d", x: 0.18, y: 0.28, w: 92, h: 34 },
+    { label: "Tomate", color: "#f6644b", x: 0.72, y: 0.2, w: 104, h: 34 },
+    { label: "Huevos", color: "#e2a82d", x: 0.62, y: 0.68, w: 96, h: 34 },
+    { label: "Lentejas", color: "#ffa55c", x: 0.28, y: 0.74, w: 112, h: 34 },
   ];
 
   let width = 0;
@@ -113,7 +113,7 @@ if (canvas instanceof HTMLCanvasElement) {
     ctx.save();
     ctx.globalAlpha = 0.88;
     ctx.fillStyle = "#ffffff";
-    ctx.strokeStyle = "rgba(222, 219, 210, 0.88)";
+    ctx.strokeStyle = "rgba(221, 222, 227, 0.92)";
     ctx.lineWidth = 1;
     roundedRect(ctx, x, y, item.w, item.h, 8);
     ctx.fill();
@@ -124,7 +124,7 @@ if (canvas instanceof HTMLCanvasElement) {
     ctx.arc(x + 17, y + item.h / 2, 5, 0, Math.PI * 2);
     ctx.fill();
 
-    ctx.fillStyle = "#1e2522";
+    ctx.fillStyle = "#081712";
     ctx.font = "700 13px system-ui, sans-serif";
     ctx.fillText(item.label, x + 30, y + 22);
     ctx.restore();
@@ -138,7 +138,7 @@ if (canvas instanceof HTMLCanvasElement) {
 
     ctx.save();
     ctx.globalAlpha = 0.48;
-    ctx.strokeStyle = "#c7c2b7";
+    ctx.strokeStyle = "#b8c1bd";
     ctx.lineWidth = 2;
 
     for (let i = 0; i < 4; i += 1) {
